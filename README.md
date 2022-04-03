@@ -11,7 +11,8 @@ As per the instruction on the mail I have created the Event Management APIs.
     - Seeding Data - (npm run seed)
         I have created script to start the seeding process
     - I am using "env-cmd" for executing comands an environment from an env file in both prod and test environement.
-
+    - I am using mongodb Atlas for the database
+    
 ===========Dependancy===========
 devDependencies
      - env-cmd
