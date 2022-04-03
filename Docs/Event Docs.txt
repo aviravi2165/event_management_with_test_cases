@@ -1,0 +1,173 @@
+Documentation for Thinkwik Event Management.
+
+Events Related APIs
+1. Create Event – 
+	
+    Request
+        Method : POST
+        URL : {{url}}/event/create
+        Parameters : none
+        Body : {
+                    "title": "Event 1",
+                    "description": "Dancing on the Beats",
+                    "event_date": "2022-05-01",
+                    "event_time": "19:30",
+                    "place": "Udaipur",
+                    "maximum_participants_allowed": 50
+                }
+    Response
+            {
+                "status": 201,
+                "message": "Created Successfully",
+                "response": {
+                    "_id": "6249567215d14958d4d0da82",
+                    "title": "Event 1",
+                    "description": "Dancing on the Beats",
+                    "event_date_time": "2022-05-01T14:00:00.000Z",
+                    "place": "Udaipur",
+                    "participants": [],
+                    "maximum_participants_allowed": 50,
+                    "event_created_by": "6247e021c61fcda0b8c3932b",
+                }
+            }
+
+2. 	Update Event - 
+    Request
+        Method : PATCH
+        URL : {{url}}/event/update/{{event_id}}
+        Parameters : event_id
+        Body : {
+                    "title": "Event 001",
+                    "description": "Dancing on the Bass",
+                    "event_date": "2022-05-02",
+                    "event_time": "20:30",
+                    "place": "Udaipur",
+                    "maximum_participants_allowed": 50
+                }
+    Response
+        {
+            "status": 200,
+            "message": "Created Successfully",
+            "response": {
+                "_id": "6249567215d14958d4d0da82",
+                "title": "Event 1",
+                "description": "Dancing on the Beats",
+                "event_date_time": "2022-05-01T14:00:00.000Z",
+                "place": "Udaipur",
+                "participants": [],
+                "maximum_participants_allowed": 50,
+                "event_created_by": "6247e021c61fcda0b8c3932b",
+                "__v": 0
+            }
+        }
+
+
+3. Get All Events
+    Request
+        Method : PATCH
+        Header : Authorization : <token>
+        URL : {{url}}/event/getall
+        Parameters : none
+    Response
+        {
+  "status": 200,
+  "message": "Success",
+  "response": [
+                {
+                    "_id": "62481b5c7d876001dd2bc235",
+                    "title": "Event 2",
+                    "description": "Event 2 has 3 phases",
+                    "place": "Jaipur",
+                    "maximum_participants_allowed": 50,
+                    "event_created_by": "6247e021c61fcda0b8c3932a",
+                    "event_date": "2022-05-01",
+                    "event_time": "10:00"
+                },
+                {
+                    "_id": "6249567215d14958d4d0da82",
+                    "title": "Event 001",
+                    "description": "Dancing on the Bass",
+                    "place": "Udaipur",
+                    "maximum_participants_allowed": 50,
+                    "event_created_by": "6247e021c61fcda0b8c3932b",
+                    "event_date": "2022-05-02",
+                    "event_time": "20:30"
+                }
+            ]
+
+
+
+4. Join Event
+    Request
+        Method : POST
+        Header : Authorization : <token>
+        URL : {{url}}/event/join/{{event_id}}
+        Parameters : event_id
+    Response
+       {
+            "status": 200,
+            "message": "Success",
+            "response": "Event Joined Successfully"
+        }
+
+
+5. Leave Event
+    Request
+        Method : POST
+        Header : Authorization : <token>
+        URL : {{url}}/event/leave/{{event_id}}
+        Parameters : event_id
+    Response
+       {
+            "status": 200,
+            "message": "Success",
+            "response": "Event left successfully"
+        }
+
+
+6. Get All Participants of an Event
+    Request
+        Method : GET
+        Header : Authorization : <token>
+        URL : {{url}}/event/allparticipants/{{event_id}}
+        Parameters : event_id
+    Response
+        {
+            "status": 200,
+            "message": "Success",
+            "response": [
+                {
+                "_id": "6247e021c61fcda0b8c3932b",
+                "first_name": "Naveen",
+                "last_name": "Kumar",
+                "date_of_birth": "1995-01-01",
+                "gender": "Male",
+                "email": "naveen@gmail.com",
+                "profileImage": "/users/profileImage_1648973127026.png"
+                }
+            ]
+        }
+
+6. Event Creator Detail
+    Request
+        Method : GET
+        Header : Authorization : <token>
+        URL : {{url}}/event/getcreaterdetail/{{event_id}}
+        Parameters : event_id
+    Response
+        {
+            "status": 200,
+            "message": "Success",
+            "response": {
+                "_id": "6247e021c61fcda0b8c3932b",
+                "first_name": "Naveen",
+                "last_name": "Kumar",
+                "date_of_birth": "1995-01-01",
+                "gender": "Male",
+                "email": "naveen@gmail.com",
+                "__v": 7,
+                "profileImage": "/users/profileImage_1648973127026.png"
+            }
+        }
+
+

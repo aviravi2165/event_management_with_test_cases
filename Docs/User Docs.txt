@@ -1,0 +1,183 @@
+Documentation for Thinkwik Event Management.
+
+Environ Variables used for ThunderClients:
+    {{url}} : "http://localhost:3000
+    {{token}} : <token is generated at the time og Signup and login both> 
+
+
+User Related APIs
+1. User Signup – to sign-up user
+	
+    Request
+        Method : POST
+        URL : {{url}}/user/signup
+        Parameters : none
+        Body : {
+                    "first_name": "Gauransh",
+                    "last_name": "Asari",
+                    "date_of_birth": "2019-11-05",
+                    "gender": "Male",
+                    "email": "gauransh@gmail.com",
+                    "password": "123"
+                
+                }
+    Response
+            {
+                "status": 200,
+                "message": "Success",
+                "response": {
+                    "_id": "6247e021c61fcda0b8c3932b",
+                    "first_name": "Naveen",
+                    "last_name": "Kumar",
+                    "date_of_birth": "1995-01-01",
+                    "gender": "Male",
+                    "email": "naveen@gmail.com",
+                }
+            }
+
+2. 	User Login - to login user
+    Request
+        Method : POST
+        URL : {{url}}/user/login
+        Parameters : none
+        Body : {
+                    "email": "naveen@gmail.com",
+                    "password": "123"
+                }
+    Response
+        {
+            "status": 201,
+            "message": "Accepted",
+            "response": {  
+                            "user": {
+                                "_id": "6247e021c61fcda0b8c3932b",
+                                "first_name": "Naveen",
+                                "last_name": "Kumar",
+                                "date_of_birth": "1995-01-01",
+                                "gender": "Male",
+                                "email": "naveen@gmail.com",
+                            },
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjQ3ZTAyMWM2MWZjZGEwYjhjMzkzMmIiLCJpYXQiOjE2NDg5NzI4NTZ9.ADCTJevZvIsbOf9bs3EGd9RgumZTEyPcHootKT121iU"
+                        }
+
+        }
+
+
+3. Update User - to update user details.
+    Request
+        Method : PATCH
+        Header : Authorization : <token>
+        URL : {{url}}/user/update
+        Parameters : none
+        Body : {
+                    "first_name": "Gauransh",
+                    "last_name": "Asari",
+                    "date_of_birth": "2019-11-05",
+                    "gender": "Male",
+                    "email": "gauransh1@gmail.com",
+                    "password": "123"
+                }
+    Response
+        {
+            "status": 200,
+            "message": "Success",
+            "response": {
+                "_id": "6249511587d88a94a51845a6",
+                "first_name": "Gauransh",
+                "last_name": "Asari",
+                "date_of_birth": "2019-11-05",
+                "gender": "Male",
+                "email": "gauransh1@gmail.com",
+            }
+        }
+
+        }
+
+4. Get User Detail
+    Request
+        Method : GET
+        Header : Authorization : <token>
+        URL : {{url}}/user/detail
+        Parameters : none
+    Response
+       {
+            "status": 200,
+            "message": "Success",
+            "response": {
+                "_id": "6247e021c61fcda0b8c3932b",
+                "first_name": "Naveen",
+                "last_name": "Kumar",
+                "date_of_birth": "1995-01-01",
+                "gender": "Male",
+                "email": "naveen@gmail.com",
+                "profileImage": "/users/profileImage_1648973127026.png"
+            }
+        }
+
+
+5. Logout Current Session
+    Request
+        Method : GET
+        Header : Authorization : <token>
+        URL : {{url}}/user/logout
+        Parameters : none
+    Response
+        {
+            "status": 200,
+            "message": "Success",
+            "response": []
+        }
+
+
+6. Logout From All Devices
+    Request
+        Method : GET
+        Header : Authorization : <token>
+        URL : {{url}}/user/logoutall
+        Parameters : none
+    Response
+        {
+            "status": 201,
+            "message": "Accepted",
+            "response": {
+                            "status": 200,
+                            "message": "Success",
+                            "response": []
+                        }
+        }
+
+7. Delete user
+    Request
+        Method : DELETE
+        Header : Authorization : <token>
+        URL : {{url}}/user/delete
+        Parameters : none
+    Response
+        {
+            "status": 200,
+            "message": "Success",
+            "response": {
+                "_id": "6247e021c61fcda0b8c3932a",
+                "first_name": "Nitesh",
+                "last_name": "Agarwal",
+                "date_of_birth": "1986-01-01",
+                "gender": "Male",
+                "email": "nitesh@gmail.com",
+                "profileImage": "/users/profileImage_1648973127026.png"
+            }
+        }
+
+8. Upload Profile Picture
+    Request
+        Method : POST
+        Header : Authorization : <token>
+        URL : {{url}}/user/avatar
+        Parameters : none
+    Response
+            {
+                "status": 200,
+                "message": "Success",
+                "response": "Avatar Uploaded"
+            }
+
+
